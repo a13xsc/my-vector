@@ -17,23 +17,32 @@ class MyVector{
 	}
 	
 public:
-	MyVector(){
+	MyVector(){//constructor default
 		v =new T[10];
 		size=0;
 		capacity=10;
 	}
-	MyVector(int k){
+	MyVector(int k){//constructor
 		v =new T[k];
 		size=0;
 		capacity=k;
 	}
-	~MyVector(){
+	/*MyVector(const MyVector& x){//copy constructor
+		size=x.size;
+		capacity=x.capacity;
+		delete[] v;
+		v=new T[capacity];
+		for(int i=0;i<size;i++){
+			v[i]=x[i];
+		}
+	}*/
+	~MyVector(){//destructor
 		delete[] v;
 	}
-	int getSize(){
+	int getSize(){//getSize
 		return size;
 	}
-	int getCapacity(){
+	int getCapacity(){//getCapacity
 		return capacity;
 	}
 	void add(T x){//add
@@ -50,8 +59,8 @@ public:
 		v[size]=x;
 		size++;
 	}
-	//int operator[](int i) const{return p[i];}
-	T & operator[](int i){
+	//T & operator[](int i) const{return p[i];}
+	T & operator[](int i)const{
 		return v[i];
 	}
 	void remove(int x){//remove
@@ -79,20 +88,33 @@ public:
 			reducesize();
 		}
 	}
-	void operator=(MyVector& vect){//assignment operator
+	MyVector& operator=(const MyVector& vect){//assignment operator
 		size=vect.size;
 		capacity=vect.capacity;
 		delete[] v;
-		v=new T[size];
-		for(int i=0;i<vect.getSize();i++){
+		v=new T[capacity];
+		for(int i=0;i<size;i++){
 			v[i]=vect[i];
-		}	
+		}
+		return *this;	
 	}
-	friend std::ostream& operator<<(std::ostream& out,const MyVector<T>& vect);//output
+	MyVector operator+(MyVector& b){//adunare
+		MyVector c(capacity+b.capacity);
+		for(int i=0;i<size;i++){
+			c.add(v[i]);
+		}
+		for(int i=0;i<b.size;i++){
+			c.add(b[i]);
+		}
+		//cout<<c<<" "<<c.getSize()<<" "<<c.getCapacity();
+		return c;
+	}
+	template<typename J>
+	friend std::ostream& operator<<(std::ostream& out,const MyVector<J>& vect);//output
 };
 
-template<typename T>
-std::ostream& operator<<(std::ostream& out, MyVector<T>& vect){//output
+template<typename J>
+std::ostream& operator<<(std::ostream& out, MyVector<J>& vect){//output
 		for(int i=0;i<vect.getSize();i++){
 			out<<vect[i]<<" ";
 		}
