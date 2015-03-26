@@ -1,7 +1,9 @@
 #include<iostream>
 using namespace std;
+
 template<typename T>
 class MyIterator;
+
 template<typename T>
 class MyVector{
 	T* v;
@@ -29,7 +31,7 @@ public:
 		size=0;
 		capacity=k;
 	}
-	/*MyVector(const MyVector& x){//copy constructor
+	MyVector(const MyVector& x){//copy constructor
 		size=x.size;
 		capacity=x.capacity;
 		delete[] v;
@@ -37,7 +39,7 @@ public:
 		for(int i=0;i<size;i++){
 			v[i]=x[i];
 		}
-	}*/
+	}
 	~MyVector(){//destructor
 		delete[] v;
 	}
@@ -107,23 +109,36 @@ public:
 		for(int i=0;i<b.size;i++){
 			c.add(b[i]);
 		}
-		//cout<<c<<" "<<c.getSize()<<" "<<c.getCapacity();
 		return c;
 	}
 	MyIterator<T> begin(){
 		MyIterator<T> x;
 		x.index=0;
 		x.it=v;
+		x.vector=this;
 		return x;
 	}
+	MyIterator<T> end(){
+		MyIterator<T> x;
+		x.index=size;
+		x.it=v+size;
+		x.vector=this;
+		return x;
+	}
+	
 	template<typename J>
 	friend std::ostream& operator<<(std::ostream& out,const MyVector<J>& vect);//output
 };
 
 template<typename J>
 std::ostream& operator<<(std::ostream& out, MyVector<J>& vect){//output
-		for(int i=0;i<vect.getSize();i++){
-			out<<vect[i]<<" ";
+		int i;
+		for(i=0;i<vect.getSize();i++){
+			out<<vect[i];
+			if(i<vect.getSize()-1){
+				out<<" ";
+			}
 		}
+		//out<<vect[i];
 		return out;
 	}
