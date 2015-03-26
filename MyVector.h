@@ -139,6 +139,5 @@ std::ostream& operator<<(std::ostream& out, MyVector<J>& vect){//output
 				out<<" ";
 			}
 		}
-		//out<<vect[i];
 		return out;
 	}
