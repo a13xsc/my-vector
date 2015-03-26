@@ -1,6 +1,8 @@
 #include<iostream>
 using namespace std;
-template <typename T>
+template<typename T>
+class MyIterator;
+template<typename T>
 class MyVector{
 	T* v;
 	int size,capacity;
@@ -59,10 +61,9 @@ public:
 		v[size]=x;
 		size++;
 	}
-	//T & operator[](int i) const{return p[i];}
-	T & operator[](int i)const{
-		return v[i];
-	}
+	
+	T & operator[](int i) const{return v[i];}
+
 	void remove(int x){//remove
 		if(x<size){
 			for(int i=x;i<size-1;i++){
@@ -108,6 +109,12 @@ public:
 		}
 		//cout<<c<<" "<<c.getSize()<<" "<<c.getCapacity();
 		return c;
+	}
+	MyIterator<T> begin(){
+		MyIterator<T> x;
+		x.index=0;
+		x.it=v;
+		return x;
 	}
 	template<typename J>
 	friend std::ostream& operator<<(std::ostream& out,const MyVector<J>& vect);//output
