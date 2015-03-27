@@ -1,0 +1,36 @@
+MyVector
+
+Clasa are 3 membrii privati: size (retine cat este ocupat din vector), capacity (retine dimensiunea totala a vectorului) si un pointer de tip T (template) pe baza caruia va fi construit containerul de elemente.
+Metoda reducesize care este tot privata reduce capacitatea vectorului in cazul in care spatiul ocupat este mai mic de jumatate din capacitatea totala.
+
+Metode publice:
+-constructor ( cu 0 si 1 parametru) si copy-constructor
+-assignment operator (rule of three)
+-destructor
+-getSize - intoarce spatiul ocupat din vector
+-getCapacity - intoarce spatiul total din vector
+-add
+-remove si removeElement
+-begin si end (functii cu iteratori)
+
+Operatori supraincarcati:
+-[]
+-atribuirea (=)
+-adunarea (concatenarea)
+-operatorul de output
+
+
+MyIterator
+
+Clasa are 3 membrii privati: pointerul de tipul containerului din MyVector, indexul la care se afla acest pointer si un al doilea pointer (pointerul se numeste “vector”) ce se leaga de clasa MyVector in momentul apelarii functiilor begin si end pentru a putea folosi in clasa MyIterator functiile din clasa MyVector (in supraincarcarea operatorului ~).
+
+Metode publice:
+-getIndex
+-getIt (intoarce adresa de care e legat iteratorul)
+
+Operatori supraincarcati:
+-dereferentierea
+-!=
+-pre si post incrementare si decrementare
+-<< si >> (incrementare si decrementare repetata)
+-operatorul ~ (stergerea elementului de care este legate pointerul it) - pentru acest operator am folosit pointerul catre clasa MyVector pentru a avea acces la functia remove din MyVector

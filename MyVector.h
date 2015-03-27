@@ -9,7 +9,7 @@ class MyVector{
 	T* v;
 	int size,capacity;
 	
-	void reducesize(){
+	void reducesize(){//reduce capacitatea vectorului container
 		T* aux;
 		aux=v;
 		v=new T[capacity/2];
@@ -64,7 +64,9 @@ public:
 		size++;
 	}
 	
-	T & operator[](int i) const{return v[i];}
+	T & operator[](int i) const{//operator []
+			return v[i];
+	}
 
 	void remove(int x){//remove
 		if(x<size){
@@ -111,14 +113,14 @@ public:
 		}
 		return c;
 	}
-	MyIterator<T> begin(){
+	MyIterator<T> begin(){//begin
 		MyIterator<T> x;
 		x.index=0;
 		x.it=v;
 		x.vector=this;
 		return x;
 	}
-	MyIterator<T> end(){
+	MyIterator<T> end(){//end
 		MyIterator<T> x;
 		x.index=size;
 		x.it=v+size;
