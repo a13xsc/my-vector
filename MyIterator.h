@@ -36,6 +36,19 @@ public:
 		it++;
 		return x;
 	}
+	MyIterator& operator--(){//operatorul pre-decrementare
+		index--;
+		it--;
+		return *this;
+	}
+	MyIterator operator--(int){//operatorul post-decrementare
+		MyIterator x;
+		x.it=it;
+		x.index=index;
+		index--;
+		it--;
+		return x;
+	}
 	void operator<<(int x){//operatorul <<
 		index-=x;
 		it-=x;
