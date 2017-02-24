@@ -1,0 +1,12 @@
+Teste tema 1 SD
+
+Instructiuni:
+
+Puneti folderul tests in interiorul folderului in care lucrati la implementare.
+Exista in folderul tests un Makefile care compileaza testele individual sau
+toate odata. Scriptul de testare se afla tot aici.
+
+Fisierele voastre trebuie sa se numeasca MyVector.h si MyIterator.h si trebuie
+sa se afle pe acelasi nivel cu folderul tests, in directorul in care lucrati.
+
+Pentru clarificari, va stam la dispozitie pe forum.
